@@ -6,34 +6,40 @@ This software is used to generate a very simple password with modern criterias f
 
 import random as r
 
-# Words used to randomize the passwords
+class PasswordGenerate(str):
+
+    def __init__(self) -> None:
+        super().__init__()
+
+    #func to randomly join two words from list of available words
+    @staticmethod
+    def generate_words() -> str:
+        words = [
+                "circle", "triangle", "square", "rectangle", "star" , # Shapes
+                "green", "blue", "red", "yellow", "purple", "orange", # Colors
+                "dog", "cat", "fish", "bird"                          # Animals
+                ]
+        chosen_words = r.sample(words, 2)
+
+        return(chosen_words)
 
 
-#func to randomly join two words from list
-def generate_words():
-    words = [
-              "circle", "triangle", "square", "rectangle", "star" , # Shapes
-              "green", "blue", "red", "yellow", "purple", "orange", # Colors
-              "dog", "cat", "fish", "bird"                          # Animals
-            ]
-    chosen_words = r.sample(words, 2)
+    #func to generate two digits
+    @staticmethod
+    def generate_num() -> int:
+        chosen_number = r.randint(10, 99)
+        
+        return(chosen_number)
 
-    return(chosen_words)
+    @staticmethod
+    def pick_random_symbol() -> str:
+        symbols=["!", "@", "#", "$", "%"]
+        chosen_symbol=r.choice(symbols)
 
-
-#func to generate two digits 
-def generate_num():
-    chosen_number = r.randint(10, 99)
-    
-    return(chosen_number)
-
-def pick_random_symbol():
-    symbols=["!", "@", "#", "$", "%"]
-    chosen_symbol=r.choice(symbols)
-
-    return symbol
+        return symbol
 
 
-#func to print password
-def print_password(words, numbers):
-    return("print_password() End")
+    #func to print password
+    @staticmethod
+    def print_password(words: str, numbers: str) -> str:
+        return("print_password() End")
